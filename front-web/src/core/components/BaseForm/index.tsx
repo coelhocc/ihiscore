@@ -3,16 +3,19 @@ import "./styles.scss";
 
 type Props = {
   title: string;
-  children: React.ReactNode;
+  image: string;
 }
 
-const BaseForm = ({ title, children }: Props) => {
+const BaseForm = ({ title, image }: Props) => {
   return (
     <div className="admin-base-form card-base">
       <h1 className="base-form-title">
         {title}
       </h1>
-      {children}
+      <img src={image} alt="texto" />
+      <div className="base-form-input">
+        <input type="number" placeholder="Insert value here" />
+      </div>
     </div>
   );
 }

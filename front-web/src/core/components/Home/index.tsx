@@ -1,7 +1,7 @@
 import React from "react";
-import { ReactComponent as T1WParahippoImage } from '../../assets/images/paraAngle.svg'
-import { ReactComponent as T1WHippoHeidhtImage } from '../../assets/images/hippoHeight.svg'
-import { ReactComponent as T1WHippoWidthImage } from '../../assets/images/hippoWidth.svg'
+import T1WParahippoImage from '../../assets/images/paraAngle.jpg'
+import T1WHippoHeidhtImage from '../../assets/images/hippoHeight.jpg'
+import T1WHippoWidthImage from '../../assets/images/hippoWidth.jpg'
 import BaseForm from '../BaseForm';
 import './styles.scss';
 
@@ -14,33 +14,13 @@ const Home = () => (
         </h1>
       </div>
       <div className="home-form">
-        <BaseForm title="Parahippocampal angle">
-          <div>
-            <T1WParahippoImage className="main-image" />
-          </div>
-          <div className="home-input">
-            <input type="number" placeholder="Insert value here" />
-          </div>
-        </BaseForm>
-        <BaseForm title="Hippocampal height">
-          <div>
-            <T1WHippoHeidhtImage className="main-image" />
-          </div>
-          <div className="home-input">
-            <input type="number" placeholder="Insert value here" />
-          </div>
-        </BaseForm>
-        <BaseForm title="Hippocampal width">
-          <div>
-            <T1WHippoWidthImage className="main-image" />
-          </div>
-          <div className="home-input">
-            <input type="number" placeholder="Insert value here" />
-          </div>
-        </BaseForm>
+        <BaseForm title="Parahippocampal angle" image={T1WParahippoImage} />
+        <BaseForm title="Hippocampal height" image={T1WHippoHeidhtImage} />
+        <BaseForm title="Hippocampal width" image={T1WHippoWidthImage} />
       </div>
-      <div>
-        
+      <div className="home-result">
+        <h1 className="border-radius-10 home-result-h1">Result:</h1>
+        <h1 className="border-radius-10 home-result-h1">Em branco</h1>
       </div>
     </div>
   </div>
