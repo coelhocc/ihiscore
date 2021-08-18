@@ -19,6 +19,7 @@
 
 .home-text {
   padding-left: 100px;
+  padding-bottom: 50px;
 }
 
 .home-form {
@@ -30,16 +31,12 @@
  max-height: 100%;
 }
 
-.home-result {
+.base-form-input {
+  margin-top: 25px;
   display: flex;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-left: 30%;
-  margin-right: 30%;
+  justify-content: center;
 }
 
-.home-result-h1 {
-  margin-right: 30px;
-  padding-right: 10px;
-  border: 1px solid black;
+.home-select {
+  height: 30px;
 }

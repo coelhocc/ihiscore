@@ -12,15 +12,11 @@
   letter-spacing: -0.015em;
   color: #263238;
   margin-bottom: 45px;
+  display: flex;
+  justify-content: center;
 }
 
 .base-form-actions {
   margin-top: 70px;
   text-align: right;
-}
-
-.base-form-input {
-  margin-top: 25px;
-  display: flex;
-  justify-content: center;
 }
