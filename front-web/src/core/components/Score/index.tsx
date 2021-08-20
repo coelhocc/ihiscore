@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BaseForm from "../BaseForm";
 import ResultField from "../ResultField";
+import Title from "../Title";
 import ParahippoImage from '../../assets/images/paraAngle.jpg'
 import HippoHeidhtImage from '../../assets/images/hippoHeight.jpg'
 import HippoWidthImage from '../../assets/images/hippoWidth.jpg'
@@ -19,6 +20,10 @@ type FormState = {
 }
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+const titleT1W = "T1W score (coronal-oblique 3D T1-weighted images, perpendicular to the long axis of the hippocampus)"
+const titleT2W = "T2W score (coronal T2-weighted images, parallel to the brainstem)"
+const complInvHippo = "Completely inverted hippocampus"
+const incomplHippoInv = "Incomplete hippocampal inversion"
 
 const Score = ({ typeScore } : Props) => {
 
@@ -38,7 +43,7 @@ const Score = ({ typeScore } : Props) => {
   }
 
   useEffect(() => {
-    
+
     typeScore==="T1W" ?
     (formData?.parahippo && formData?.hippoHeidht && formData?.hippoWidth ? (
       setResult((formData?.parahippo - 30 * (formData?.hippoHeidht / formData?.hippoWidth)).toFixed())
@@ -49,10 +54,10 @@ const Score = ({ typeScore } : Props) => {
     ) : setResult(""));
           
     typeScore==="T1W" ?
-    (result ? setInterpretation(((Number.parseInt(result) > 102) ? "Completely inverted hippocampus" : "Incomplete hippocampal inversion")
+    (result ? setInterpretation(((Number.parseInt(result) > 102) ? complInvHippo : incomplHippoInv)
     ): setInterpretation(""))
     :
-    (result ? setInterpretation(((Number.parseInt(result) < 1.2) ? "Completely inverted hippocampus" : "Incomplete hippocampal inversion")
+    (result ? setInterpretation(((Number.parseInt(result) < 1.2) ? complInvHippo : incomplHippoInv)
     ): setInterpretation(""));
 
   }, [formData, result, typeScore]);
@@ -62,15 +67,7 @@ const Score = ({ typeScore } : Props) => {
     <div className="score-container">
       <div className="score-content card-base border-radius-20">
         <div className="score-title">
-          { typeScore==="T1W" ?
-          <h1 className="score-text-title">
-            T1W score (coronal-oblique 3D T1-weighted images, perpendicular to the long axis of the hippocampus)
-          </h1>
-          :
-          <h1 className="score-text-title">
-            T2W score (coronal T2-weighted images, parallel to the brainstem)
-          </h1>
-          }
+          { typeScore==="T1W" ? <Title title={titleT1W}/> : <Title title= {titleT2W} /> }
         </div>
         <div className="score-form">
           { typeScore==="T1W" ?
@@ -78,10 +75,12 @@ const Score = ({ typeScore } : Props) => {
               <div className="score-input">
                 <input 
                   className="form-control"
+                  value={formData?.parahippo ? formData?.parahippo : ""}
                   name="parahippo" 
                   type="number"
                   onChange={handleOnChange}
-                  placeholder="Insert value here"/>
+                  placeholder="Insert value here"
+                />
               </div>
             </BaseForm>
             :
@@ -89,10 +88,11 @@ const Score = ({ typeScore } : Props) => {
               <div className="base-form-input">
                 <select 
                   name="colaDepth"
+                  value={formData?.colaDepth ? (formData?.colaDepth===1 ? "shallow" : "deep") : "choose"}
                   className="form-select"
                   onChange={handleOnChange}
                 >
-                  <option selected>Choose here</option>
+                  <option value="choose">Choose here</option>
                   <option value="deep">Deep</option>
                   <option value="shallow">Shallow</option>
                 </select>
@@ -103,24 +103,37 @@ const Score = ({ typeScore } : Props) => {
             <div className="score-input">
               <input 
                 className="form-control"
+                value={formData?.hippoHeidht ? formData?.hippoHeidht : ""}
                 name="hippoHeidht" 
                 type="number" 
                 onChange={handleOnChange}
-                placeholder="Insert value here" />
+                placeholder="Insert value here" 
+              />
             </div>
           </BaseForm>
           <BaseForm title="Hippocampal width" image={HippoWidthImage}>
             <div className="score-input">
               <input 
                 className="form-control"
+                value={formData?.hippoWidth ? formData?.hippoWidth : ""}
                 name="hippoWidth" 
                 type="number" 
                 onChange={handleOnChange}
-                placeholder="Insert value here" />
+                placeholder="Insert value here" 
+              />
             </div>
           </BaseForm>
         </div>
         <ResultField result={result} interpretation={interpretation} />
+        <div className="score-button">
+          <button 
+            type="button" 
+            className="btn btn-primary"
+            onClick={() => setFormData({})}
+          >
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   )

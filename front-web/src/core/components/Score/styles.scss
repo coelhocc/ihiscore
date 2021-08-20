@@ -1,31 +1,28 @@
 
 .score-container {
   margin: 20px;
-  width: auto;
 }
 
 .score-content {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 20px;
-  width: 100%;
 }
 
 .score-title {
-  padding-bottom: 50px;
-}
-
-.score-text-title {
-  font-size: 25px;
-  line-height: 45px;
-  letter-spacing: -0.015em;
-  text-align: center;
+  padding-bottom: 80px;
 }
 
 .score-form {
+  margin-left: 5%;
   display: flex;
   justify-content: center;
 }
 
 .score-input {
   margin-top: 25px;
+}
+
+.score-button {
+  display: flex;
+  justify-content: center;
 }
