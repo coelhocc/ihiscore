@@ -24,6 +24,7 @@ const titleT1W = "T1W score (coronal-oblique 3D T1-weighted images, perpendicula
 const titleT2W = "T2W score (coronal T2-weighted images, parallel to the brainstem)"
 const complInvHippo = "Completely inverted hippocampus"
 const incomplHippoInv = "Incomplete hippocampal inversion"
+const inputPlaceholder = "Insert value here"
 
 const Score = ({ typeScore } : Props) => {
 
@@ -79,7 +80,7 @@ const Score = ({ typeScore } : Props) => {
                   name="parahippo" 
                   type="number"
                   onChange={handleOnChange}
-                  placeholder="Insert value here"
+                  placeholder={inputPlaceholder}
                 />
               </div>
             </BaseForm>
@@ -107,7 +108,7 @@ const Score = ({ typeScore } : Props) => {
                 name="hippoHeidht" 
                 type="number" 
                 onChange={handleOnChange}
-                placeholder="Insert value here" 
+                placeholder={inputPlaceholder}
               />
             </div>
           </BaseForm>
@@ -119,7 +120,7 @@ const Score = ({ typeScore } : Props) => {
                 name="hippoWidth" 
                 type="number" 
                 onChange={handleOnChange}
-                placeholder="Insert value here" 
+                placeholder={inputPlaceholder}
               />
             </div>
           </BaseForm>
