@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { View, StyleSheet, Text, TextInput } from "react-native"
+import { View, StyleSheet, Text, TextInput, Alert } from "react-native"
 import RNPickerSelect from 'react-native-picker-select';
 import { RectButton } from 'react-native-gesture-handler';
 import NumericInput from 'react-native-numeric-input'
@@ -26,19 +26,17 @@ const Score = ({ typeScore, titleText } : Props) => {
   const [ parahippo, setParahippo ] = useState('');
   const [ hippoHeidht, setHippoHeidht ] = useState('');
   const [ hippoWidth, setHippoWidth ] = useState('');
-  const [ result, setResult ] = useState<string>("");
-  const [ interpretation, setInterpretation ] = useState<string>("");
+  const [ result, setResult ] = useState("");
+  const [ interpretation, setInterpretation ] = useState("");
 
   const onPress = () => {
     
     typeScore==="T1W" ? setParahippo('') : setColaDepth('');
     setHippoHeidht('');
     setHippoWidth('');
-    setParahippo('');
   }
 
   useEffect(() => {
-
     typeScore==="T1W" ?
     (parahippo && hippoHeidht && hippoWidth ? (
       setResult((Number.parseInt(parahippo) - 30 * (Number.parseInt(hippoHeidht) / Number.parseInt(hippoWidth))).toFixed())
@@ -70,22 +68,20 @@ const Score = ({ typeScore, titleText } : Props) => {
               placeholderTextColor="#9E9E9E"
               maxLength={3}
               onChangeText={text => setParahippo(text)}
-              value={parahippo ? parahippo : undefined}
+              value={parahippo}
             />
           </BaseForm>
         :
           <BaseForm title="Collateral sulcus depth" imagePath={require('../../assets/collaDepth.png')}>
             <RNPickerSelect
-              onValueChange={value => {
-                setColaDepth(value);
-              }}
               placeholder={placeholder}
-              value={colaDepth ? (colaDepth==='1' ? "shallow" : "deep") : "choose"}
               items={[
-                    {label:'deep', value: 1},
-                    {label: 'shallow', value: 2}
+                    {label:'deep', value: '1'},
+                    {label: 'shallow', value: '2'}
               ]}
               style={pickerSelectStyles}
+              onValueChange={value => setColaDepth(value)}
+              value={colaDepth}
             />
           </BaseForm>
       }
@@ -97,7 +93,7 @@ const Score = ({ typeScore, titleText } : Props) => {
           placeholderTextColor="#9E9E9E"
           maxLength={3}
           onChangeText={text => setHippoHeidht(text)}
-          value={hippoHeidht ? hippoHeidht : undefined}
+          value={hippoHeidht}
         />
       </BaseForm>
       <BaseForm title="Hippocampal width" imagePath={require('../../assets/hippoWidth.png')}>
@@ -108,7 +104,7 @@ const Score = ({ typeScore, titleText } : Props) => {
           placeholderTextColor="#9E9E9E"
           maxLength={3}
           onChangeText={text => setHippoWidth(text)}
-          value={hippoWidth ? hippoWidth : undefined}
+          value={hippoWidth}
         />
       </BaseForm>
       {result ? 
@@ -130,36 +126,36 @@ const Score = ({ typeScore, titleText } : Props) => {
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
+    alignSelf:"center",
+    marginTop: 5,
     fontSize: 16,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    backgroundColor: '#FFF',
-    borderRadius: 10,
+    backgroundColor: '#D3D3D3',
+    borderRadius: 5,
     color: '#ED7947',
-    paddingRight: 30,
-    fontFamily: "Play_700Bold",
-    height: 50
+    fontFamily: "Play_400Regular",
+    height: 40,
+    width: 140,
   },
   inputAndroid: {
+    alignSelf:"center",
+    marginTop: 5,
     fontSize: 16,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    backgroundColor: '#FFF',
-    borderRadius: 10,
+    backgroundColor: '#D3D3D3',
+    borderRadius: 5,
     color: '#ED7947',
-    paddingRight: 30,
-    fontFamily: "Play_700Bold",
-    height: 50
+    fontFamily: "Play_400Regular",
+    height: 40,
+    width: 140,
   },
   placeholder: {
     color: '#9E9E9E',
     fontSize: 16,
-    fontFamily: "Play_700Bold",
+    fontFamily: "Play_400Regular",
   },
-  iconContainer: {
-    top: 10,
-    right: 12,
-  }
 })
 
 const styles = StyleSheet.create({
@@ -181,18 +177,19 @@ const styles = StyleSheet.create({
 
   textTitle: {
     paddingTop: 5,
-    textAlign: "center",
     fontFamily: "Play_400Regular",
     fontSize: 21,
   },
 
   inputText: {
-    height: 35,
-    width: 130,
+    height: 40,
+    width: 140,
     backgroundColor: '#D3D3D3',
     borderRadius: 5,
     color: '#ED7947',
     fontFamily: "Play_400Regular",
+    paddingVertical: 12,
+    paddingHorizontal: 10,
     fontSize: 16,
     marginTop: 5
   },
