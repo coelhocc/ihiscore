@@ -27,12 +27,16 @@ const styles = StyleSheet.create({
   image: {
     width: 296,
     height: 242,
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 10,
+    overflow: 'hidden'
   },
   title: {
     color: '#00D4FF',
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginTop: 15,
+    marginTop: 5,
     fontFamily: "Play_700Bold",
     paddingBottom: 5
   },

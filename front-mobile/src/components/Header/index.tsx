@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const Header = () => {
   return (
-    <View style={styles.header}>
+    <View style={styles.container}>
       <Text style={styles.textLogo}>
         Incomplete Hippocampal Inversion Score
       </Text>
@@ -12,9 +12,10 @@ const Header = () => {
 }
 
 const styles = StyleSheet.create({
-  header: {
-      paddingTop: 50,
-      height: 90,
+  container: {
+      marginTop: 25,
+      paddingTop: 5,
+      height: 35,
       backgroundColor: '#37474F',
       flexDirection: 'row',
       justifyContent: 'center'

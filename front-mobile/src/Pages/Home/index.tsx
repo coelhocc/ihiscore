@@ -12,6 +12,9 @@ type FormState = {
 
 const Home = () => {
 
+  const t1WTitle = "T1W score (coronal-oblique 3D T1-weighted images, perpendicular to the long axis of the hippocampus)"
+  const t2WTitlw = "T2W score (coronal T2-weighted images, parallel to the brainstem)"
+
   const handleOnPress = () => {
     //Alert.alert('Você clicou no botão!')
 
@@ -21,7 +24,7 @@ const Home = () => {
     <>
       <Header />
       <ScrollView style={styles.container}>
-        <Score typeScore="T1W" />
+        <Score typeScore="T1W" titleText={t1WTitle} />
       </ScrollView>
     </>
 
@@ -31,48 +34,9 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    flex: 1,
+    backgroundColor: '#ecf0f1',
   },
-  title: {
-    color: '#00D4FF',
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginTop: 15,
-    fontFamily: "Play_700Bold",
-  },
-  subTitle: {
-    color: '#ED7947',
-    fontSize: 21,
-    marginTop: 5,
-    fontFamily: "Play_400Regular",
-  },
-  footer: {
-    marginTop: '5%',
-    alignItems: 'center'
-  },
-  button: {
-    backgroundColor: '#00D4FF',
-    flexDirection: 'row',
-    borderRadius: 10
-  },
-  buttonIcon: {
-    backgroundColor: '#ED7947',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 50,
-    borderBottomRightRadius: 10,
-    borderTopRightRadius: 10
-  },
-  buttonText: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 50,
-    paddingRight: 50,
-    fontFamily: "Play_700Bold",
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: '#0B1F34',
-  }
 });
 
 export default Home;
