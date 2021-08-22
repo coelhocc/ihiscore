@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { View, StyleSheet, Text, TextInput, Alert } from "react-native"
 import RNPickerSelect from 'react-native-picker-select';
 import { RectButton } from 'react-native-gesture-handler';
-import NumericInput from 'react-native-numeric-input'
 import BaseForm from "../BaseForm"
 import Result from "../Result";
 
@@ -34,6 +33,8 @@ const Score = ({ typeScore, titleText } : Props) => {
     typeScore==="T1W" ? setParahippo('') : setColaDepth('');
     setHippoHeidht('');
     setHippoWidth('');
+    setResult('');
+    setInterpretation('');
   }
 
   useEffect(() => {
@@ -76,8 +77,8 @@ const Score = ({ typeScore, titleText } : Props) => {
             <RNPickerSelect
               placeholder={placeholder}
               items={[
-                    {label:'deep', value: '1'},
-                    {label: 'shallow', value: '2'}
+                    {label:'Deep', value: '1'},
+                    {label: 'Shallow', value: '2'}
               ]}
               style={pickerSelectStyles}
               onValueChange={value => setColaDepth(value)}
