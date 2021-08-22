@@ -7,7 +7,7 @@ import Result from "../Result";
 
 const placeholder = {
   label: 'Choose here',
-  value: null
+  value: 0
 }
 
 type Props = {
@@ -143,8 +143,8 @@ const pickerSelectStyles = StyleSheet.create({
     alignSelf:"center",
     marginTop: 5,
     fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     backgroundColor: '#D3D3D3',
     borderRadius: 5,
     color: '#ED7947',
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
   textTitle: {
     paddingTop: 5,
     fontFamily: "Play_400Regular",
+    alignSelf: 'center',
     fontSize: 21,
   },
 
