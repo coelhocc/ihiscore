@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { View, StyleSheet, Text, TextInput, Alert } from "react-native"
+import { View, StyleSheet, Text, TextInput } from "react-native"
 import RNPickerSelect from 'react-native-picker-select';
+import { RectButton } from 'react-native-gesture-handler';
 import NumericInput from 'react-native-numeric-input'
 import BaseForm from "../BaseForm"
 import Result from "../Result";
@@ -27,6 +28,14 @@ const Score = ({ typeScore, titleText } : Props) => {
   const [ hippoWidth, setHippoWidth ] = useState('');
   const [ result, setResult ] = useState<string>("");
   const [ interpretation, setInterpretation ] = useState<string>("");
+
+  const onPress = () => {
+    
+    typeScore==="T1W" ? setParahippo('') : setColaDepth('');
+    setHippoHeidht('');
+    setHippoWidth('');
+    setParahippo('');
+  }
 
   useEffect(() => {
 
@@ -102,7 +111,18 @@ const Score = ({ typeScore, titleText } : Props) => {
           value={hippoWidth ? hippoWidth : undefined}
         />
       </BaseForm>
-      <Result result={ result } interpretation={ interpretation } />
+      {result ? 
+        <>
+        <Result result={ result } interpretation={ interpretation } /> 
+        <RectButton style={styles.button} onPress={onPress}>
+          <Text style={styles.buttonText}>
+            Reset
+          </Text>
+        </RectButton>
+        </>
+        :
+        <></>
+      }
     </View>
   )
 
@@ -145,11 +165,10 @@ const pickerSelectStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   
   container: {
-    alignSelf: "center",
     margin: 10,
     borderRadius: 20,
     backgroundColor: "white",
-    paddingBottom: 10,
+    padding: 10,
     shadowColor: "black",
     shadowOffset: {
       width: 15,
@@ -177,6 +196,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 5
   },
+
+  button: {
+    backgroundColor: '#00D4FF',
+    flexDirection: 'row',
+    borderRadius: 10,
+    height: 30,
+    width: '100%',
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+
+  buttonText: {
+    fontFamily: "Play_700Bold",
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#0B1F34',
+  }
 
 })
 
