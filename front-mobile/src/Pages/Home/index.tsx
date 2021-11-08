@@ -13,7 +13,7 @@ type FormState = {
 const Home = () => {
 
   const t1WTitle = "T1W score (coronal-oblique 3D T1-weighted images, perpendicular to the long axis of the hippocampus)"
-  const t2WTitle = "T2W score (coronal T2-weighted images, parallel to the brainstem)"
+  const t2WTitle = "T2W score (coronal T2-weighted images, parallel to the Talairach line)"
 
   const handleOnPress = () => {
     //Alert.alert('Você clicou no botão!')
