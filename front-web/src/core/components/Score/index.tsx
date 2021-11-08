@@ -21,7 +21,7 @@ type FormState = {
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 const titleT1W = "T1W score (coronal-oblique 3D T1-weighted images, perpendicular to the long axis of the hippocampus)"
-const titleT2W = "T2W score (coronal T2-weighted images, parallel to the brainstem)"
+const titleT2W = "T2W score (coronal T2-weighted images, parallel to the Talairach line)"
 const complInvHippo = "Completely inverted hippocampus"
 const incomplHippoInv = "Incomplete hippocampal inversion"
 const inputPlaceholder = "Insert value here"
